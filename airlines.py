@@ -1,11 +1,9 @@
-import csv
 import json
 
 with open('airlines.csv') as f:
-    lines = csv.reader(f)
-    next(lines)
+    lines = [line.split('"') for line in f]
     d = dict()
-    for airline in lines:
+    for airline in lines[1:]:
         if airline[1] in d:
             d[airline[1]] += 1
         else:
